@@ -1,1 +1,32 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+	
+<div ng-app="myApp" ng-controller="myCon" ng-init="baseUrl='https://static.criteo.com/images/test/'">
 
+<form>
+File name: <input style="width:225px" ng-model="filename" value="{{filename}}"><br>
+File extension: <input style="width:30px" ng-model="extension" value="{{extension}}"><br><br>
+</form>
+ 
+ <img ng-src="{{baseUrl}}" ng-show="filename == '300x250' && extension == 'gif' || filename == '728x90' && extension == 'gif'">
+ 
+ <!-- When the values that are in both forms matches 300x250 or 728x90 for the file size and gif for the extension, the image is shown with ng-show. Otherwise, it is hidden. -->
+
+ </div>
+	 
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCon', ['$scope', function($scope) {
+    $scope.filename = "300x250";
+    $scope.extension = "gif";
+}]);
+</script>
+
+<!-- Using a controller and the scope object to change the initial value of the models and to change the values in execution time. -->
+
+</div>
+
+</body>
+</html>
